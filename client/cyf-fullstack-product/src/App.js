@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Body from "./components/Body";
+import Header from "./components/Header";
 
 function App() {
-  const [backendData, setbackendData] = useState([{}]);
-  useEffect(() => {
-    fetch("/api")
-      .then((resopnse) => resopnse.json())
-      .then((data) => {
-        setbackendData(data);
-      });
-  }, []);
   return (
-    <div>
-      {backendData["Project name"]}
+    <div className="App"> 
+    <Header />
+    <Body />
     </div>
   );
 }
