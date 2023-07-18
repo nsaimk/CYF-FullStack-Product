@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "../style/Style.css";
 
-const Body = () => {
-  const [backendData, setbackendData] = useState([{}]);
-  const [day, setDay] = useState(0);
+const Body = ({ day }) => {
+  const [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
     const dataFetch = async () => {
       await fetch("http://localhost:3001/pro")
-        .then((resopnse) => resopnse.json())
+        .then((response) => response.json())
         .then((data) => {
-          setbackendData(data);
+          setBackendData(data);
         });
     };
     dataFetch();
   }, []);
+
+  if (!backendData || backendData.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  const breakfastIndex = day - 1;
+  const lunchIndex = day + 3;
+  const dinnerIndex = day + 7;
 
   return (
     <div className="card-group">
@@ -34,14 +41,15 @@ const Body = () => {
             }}
           >
             <h5 className="card-title">
-              Meal: <b className="title">{backendData[day].name}</b>{" "}
+              Meal: <b className="title">{backendData[breakfastIndex].name}</b>{" "}
             </h5>
           </div>
           <p className="ingredients">
-            {backendData[day].ingredients1} * {backendData[day].ingredients2} *{" "}
-            {backendData[day].ingredients3}
+            {backendData[breakfastIndex].ingredients1} *{" "}
+            {backendData[breakfastIndex].ingredients2} *{" "}
+            {backendData[breakfastIndex].ingredients3}
           </p>
-          <p className="card-text">{backendData[day].recipe}</p>
+          <p className="card-text">{backendData[breakfastIndex].recipe}</p>
         </div>
         <div className="card-footer">
           <small className="text-muted"></small>
@@ -55,13 +63,14 @@ const Body = () => {
         />
         <div className="card-body">
           <h5 className="card-title">
-            Meal: <b className="title">{backendData[0].name}</b>
+            Meal: <b className="title">{backendData[lunchIndex].name}</b>
           </h5>
           <p className="ingredients">
-            {backendData[0].ingredients1} * {backendData[0].ingredients2} *{" "}
-            {backendData[0].ingredients3}
+            {backendData[lunchIndex].ingredients1} *{" "}
+            {backendData[lunchIndex].ingredients2} *{" "}
+            {backendData[lunchIndex].ingredients3}
           </p>
-          <p className="card-text">{backendData[0].recipe}</p>
+          <p className="card-text">{backendData[lunchIndex].recipe}</p>
         </div>
         <div className="card-footer">
           <small className="text-muted"></small>
@@ -75,13 +84,14 @@ const Body = () => {
         />
         <div className="card-body">
           <h5 className="card-title">
-            Meal: <b className="title">{backendData[0].name}</b>{" "}
+            Meal: <b className="title">{backendData[dinnerIndex].name}</b>{" "}
           </h5>
           <p className="ingredients">
-            {backendData[0].ingredients1} * {backendData[0].ingredients2} *{" "}
-            {backendData[0].ingredients3}
+            {backendData[dinnerIndex].ingredients1} *{" "}
+            {backendData[dinnerIndex].ingredients2} *{" "}
+            {backendData[dinnerIndex].ingredients3}
           </p>
-          <p className="card-text">Meal: {backendData[0].recipe}</p>
+          <p className="card-text">Meal: {backendData[dinnerIndex].recipe}</p>
         </div>
         <div className="card-footer">
           <small className="text-muted"></small>

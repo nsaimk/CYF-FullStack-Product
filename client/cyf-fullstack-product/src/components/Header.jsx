@@ -1,38 +1,34 @@
 import React, { useState } from "react";
 import "../style/Style.css";
 
-const Header = () => {
-  const [day, setDay] = useState(1);
+const Header = ({ day, onDayChange }) => {
   const [backButtonDisplay, setBackButtonDisplay] = useState("none");
-  const handleNext = () => {
-    if (day === 1) {
-      setDay(day + 1);
-      setBackButtonDisplay("");
-    } else if (day === 4) {
-      setDay(4);
-    } else {
-      setDay(day + 1);
-    }
-  };
-  //console.log(backButtonDisplay)
 
-  const handleBack = () => {
-    if (day === 2) {
-      setDay(day - 1);
-      setBackButtonDisplay("none");
+  const handleDay = () => {
+    if (day < 4) {
+      const nextDay = day + 1;
+      setBackButtonDisplay(nextDay === 1 ? "none" : "");
+      onDayChange(nextDay);
     } else {
-      setDay(day - 1);
+      day = 4;
     }
   };
 
+  const handleBackDay = () => {
+    const previousDay = day - 1;
+    console.log(previousDay)
+    setBackButtonDisplay(previousDay === 1 ? "none" : "");
+    onDayChange(previousDay);
+    
+  };
   return (
     <header className="App-header">
       <p></p>
-      <button style={{ display: backButtonDisplay }} onClick={handleBack}>
+      <button onClick={handleBackDay} style={{ display: backButtonDisplay }}>
         Back
       </button>
       <h1>List of Your Diet / Day {day}</h1>
-      <button onClick={handleNext}>
+      <button onClick={handleDay}>
         <i>Next Day</i>
         <svg
           xmlns="http://www.w3.org/2000/svg"
