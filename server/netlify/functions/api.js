@@ -1,10 +1,19 @@
 const express = require("express");
-
 const serverless = require("serverless-http");
+const bodyParser = require("body-parser");
+const { MongoClient } = require("mongodb");
+const dotenv = require("dotenv");
+const cors = require('cors');
 
 const app = express();
-
 const router = express.Router();
+
+app.use(bodyParser.json());
+app.use(cors());
+
+dotenv.config();
+
+const connectionString = process.env.ATLAS_URI;
 
 async function connectToDb() {
   const client = new MongoClient(connectionString);
@@ -24,10 +33,10 @@ router.get("/pro", async (req, res) => {
       console.log(products);
 
       res.json(products);
-    })
-    .catch((err) => {
-      console.error(err);
     });
+  // .catch((err) => {
+  //   console.error(err);
+  // });
 });
 
 app.use("/", router);

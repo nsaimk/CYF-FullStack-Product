@@ -6,7 +6,7 @@ const Body = ({ day }) => {
 
   useEffect(() => {
     const dataFetch = async () => {
-      await fetch("http://localhost:3001/pro")
+      await fetch("https://cyf-product-server.netlify.app/pro")
         .then((response) => response.json())
         .then((data) => {
           setBackendData(data);
