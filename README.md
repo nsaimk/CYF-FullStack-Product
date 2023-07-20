@@ -42,6 +42,23 @@ npm start
 ```
 The application should now be running on http://localhost:3000/, and you can access it from your web browser.
 
+## End-to-End Testing with Cypress
+To run the end-to-end (E2E) tests for your full-stack project using Cypress, follow these steps:
+
+1. Install Cypress:
+```sh
+cd my-full-stack-project/client
+npm install cypress --save-dev
+```
+2. Open the Cypress Test Runner:
+```sh
+cd client
+npx cypress open
+```
+In the Cypress Test Runner window, click on "e2e.spec.js" or the relevant test file to run the E2E tests. Cypress will automatically execute the tests in a browser window.
+
+The Cypress E2E tests will simulate user interactions with your application and verify that different components and functionalities work as expected.
+
 
 ## Future Enhancements
 Here are some ideas for future enhancements to improve the application:
