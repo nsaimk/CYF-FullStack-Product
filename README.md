@@ -17,8 +17,6 @@ This is a full-stack web application that allows users to manage their daily die
 
 - **Styling:** CSS and Bootstrap are used for styling the frontend components and creating a visually appealing user interface.
 
-- **Authentication:** User authentication is implemented using JSON Web Tokens (JWT) to secure the application's endpoints.
-
 - **API Communication:** Axios is used to make HTTP requests from the frontend to interact with the backend APIs.
 
 ## Getting Started
