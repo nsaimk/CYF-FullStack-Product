@@ -1,7 +1,7 @@
 
 # My Full-Stack Project
 ## Overview
-This is a full-stack web application that allows users to manage their daily diet plans. Users can view a list of meals for each day, add new meals, and navigate between different days to plan their diet efficiently. The application is built using the MERN stack, which includes MongoDB, Express.js, React, and Node.js. However, I made this project in order to complete a part of application for CodeYourFuture Product volunteer work. Because of this it shows very basic features.
+This is a full-stack web application that allows users to manage their daily diet plans. Users can view a list of meals for each day, and navigate between different days to plan their diet efficiently. The application is built using the MERN stack, which includes MongoDB, Express.js, React, and Node.js. However, I made this project in order to complete a part of application for CodeYourFuture Product volunteer work. Because of this it shows very basic features.
 
 ## Features
 - **View Daily Diet Plan:** Users can view a list of meals for each day, including breakfast, lunch, and dinner.
